@@ -11,14 +11,19 @@ export class AppComponent {
   newMember = '';
   members: string[] = [];
 
+  //ErrorHandling State
+  errorMessage = '';
+
   addMember() {
+    if (!this.newMember) {
+      this.errorMessage = 'Name cannot be empty. Please enter name';
+      return;
+    }
     this.members.push(this.newMember);
-    console.log(this.members)
     this.newMember = '';
   }
 
   onInput(member: string) {
     this.newMember = member;
-    console.log(this.newMember);
   }
 }
